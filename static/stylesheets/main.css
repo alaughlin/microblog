@@ -1,0 +1,51 @@
+html, body, section, h1, h2, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 300;
+  padding: 5px 0;
+}
+
+input, textarea {
+  display: block;
+  margin: 10px 0;
+}
+
+.container {
+  width: 900px;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.new-post-form {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.form-label {
+  padding: 5px 0;
+}
+
+.submit-btn {
+  padding: 5px;
+}
+
+.post {
+  margin-bottom: 10px;
+}

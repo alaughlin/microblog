@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <link href="/stylesheets/main.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Posts</h1>
+      
+      <form class="new-post-form" action="/posts" method="POST">
+        <label class="form-label">Title</label>
+        <input type="text" name="title"></input>
+        <label class="form-label">Content</label>
+        <textarea cols=50 rows=10 name="content"></textarea>
+        <input type="submit" class="submit-btn" value="New Post"></input>
+      </form>
+      
+      <section class="posts"></section>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: "/posts",
+          dataType: "json",
+          success: function(posts) {
+            _.each(posts, function(post) {
+              $post = $('<article class="post"><h2>' + post.title + '</h2>' + '<p>' + post.content + '</p></article>');
+              $('.posts').append($post);
+            });
+          }
+        });
+        
+        $('.new-post-form').on('submit', function(event) {
+          event.preventDefault();
+          data = $('.new-post-form').serializeArray();
+          console.log(data);
+          $.ajax({
+            url: "/posts",
+            type: "POST",
+            data: data,
+            dataType: "json",
+            success: function(post) {
+              $post = $('<article class="post"><h2>' + post.title + '</h2>' + '<p>' + post.content + '</p></article>');
+              $('.posts').prepend($post);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
